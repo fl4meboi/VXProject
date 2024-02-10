@@ -15,3 +15,4 @@ Content/Box_Brush6_StaticMesh.uasset filter=lfs diff=lfs merge=lfs -text
 Content/LevelPrototyping filter=lfs diff=lfs merge=lfs -text
 Content/MSPresets filter=lfs diff=lfs merge=lfs -text
 Content/_VFX filter=lfs diff=lfs merge=lfs -text
+Content/** filter=lfs diff=lfs merge=lfs -text
