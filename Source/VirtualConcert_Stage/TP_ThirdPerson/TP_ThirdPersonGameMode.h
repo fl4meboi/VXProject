@@ -13,6 +13,22 @@ class ATP_ThirdPersonGameMode : public AGameModeBase
 
 public:
 	ATP_ThirdPersonGameMode();
+
+	// ---------------Variable ------------
+	
+	UPROPERTY(EditDefaultsOnly , Category = "Factory")
+	class TSubclassOf<UUserWidget> MainFactory;
+	
+	UPROPERTY(VisibleAnywhere , Category = "UI")
+	class UUserWidget* MainWidget;
+	
+	// ---------------Variable ------------
+	
+	// ---------------Function ------------
+	virtual void BeginPlay()override;
+	// ---------------Function ------------
+
+
 };
 
 
