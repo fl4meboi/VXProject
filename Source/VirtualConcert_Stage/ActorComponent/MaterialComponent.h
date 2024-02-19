@@ -19,7 +19,7 @@ protected:
 public:	
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	// -------------------Varaible
+	// -------------------Varaible-----------------
 	UPROPERTY(VisibleAnywhere, Category = "Variable")
 	class AActor* Owner;
 
@@ -31,17 +31,35 @@ public:
 
 	float CurrentA = 1.0f;
 
-	// -------------------Varaible
+	// -------------------Varaible-----------------
 	 
 	
 	
-	// -------------------Function
+	// -------------------Function-----------------
 	void SetDynMat(class UMaterialInstanceDynamic* DMObj);
 	
 	void DisolveAlpha(float Delta);
 
 	void Updatate(float Delta);
-	// -------------------Function
+
+	
+	// 비쥬얼 오디오 임시 연결용 BlueprintCallable	
+	
+	UFUNCTION(BlueprintCallable)
+	void OnBindWithBlueprint();
+	
+	void MaterialTimeReset();
+
+	void OnSwitch();
+
+
+	// 스플릿 개수 임시 적용
+	UFUNCTION(BlueprintCallable)
+	void SetSplats(float Count);
+
+
+
+	// -------------------Function-----------------
 
 
 

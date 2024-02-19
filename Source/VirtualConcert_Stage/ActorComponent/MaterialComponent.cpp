@@ -14,8 +14,6 @@ void UMaterialComponent::BeginPlay()
 	Owner = GetOwner();
 
 	
-
-
 }
 
 void UMaterialComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -29,11 +27,8 @@ void UMaterialComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAc
 void UMaterialComponent::SetDynMat(UMaterialInstanceDynamic* DMObj)
 {
 
-	// 여기 나중에 부모 자식관계로 코드 간략화하기
-	
 
 		this->DynMat = DMObj;
-		UE_LOG(LogTemp, Warning, TEXT("MatComp : %s"), *this->DynMat->GetName());
 
 
 }
@@ -59,3 +54,31 @@ void UMaterialComponent::Updatate(float Delta)
 
 }
 
+void UMaterialComponent::OnBindWithBlueprint()
+{
+
+	MaterialTimeReset();
+	OnSwitch();
+
+}
+
+// 머티리얼 시간을 0으로 리셋.
+void UMaterialComponent::MaterialTimeReset()
+{
+	
+	float CurrentGameTime = GetWorld()->GetTimeSeconds();
+	DynMat->SetScalarParameterValue(FName("SetStartTime"), CurrentGameTime);
+
+}
+
+void UMaterialComponent::OnSwitch()
+{
+	
+	DynMat->SetScalarParameterValue(FName("OnActive"),1.0f);
+
+}
+
+void UMaterialComponent::SetSplats(float Count)
+{
+	DynMat->SetScalarParameterValue(FName("SplatsAbsolute"),Count );
+}
