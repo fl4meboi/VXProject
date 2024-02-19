@@ -82,3 +82,8 @@ void UMaterialComponent::SetSplats(float Count)
 {
 	DynMat->SetScalarParameterValue(FName("SplatsAbsolute"),Count );
 }
+
+void UMaterialComponent::SetColor(FLinearColor HSVtoRGB)
+{
+	DynMat->SetVectorParameterValue(FName("Color"), HSVtoRGB);
+}

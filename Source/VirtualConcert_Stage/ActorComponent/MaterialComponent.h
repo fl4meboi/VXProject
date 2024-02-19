@@ -36,6 +36,7 @@ public:
 	
 	
 	// -------------------Function-----------------
+	
 	void SetDynMat(class UMaterialInstanceDynamic* DMObj);
 	
 	void DisolveAlpha(float Delta);
@@ -57,7 +58,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetSplats(float Count);
 
-
+	void SetColor(FLinearColor HSVtoRGB);
 
 	// -------------------Function-----------------
 
