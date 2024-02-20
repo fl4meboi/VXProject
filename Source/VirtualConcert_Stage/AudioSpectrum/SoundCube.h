@@ -23,10 +23,10 @@ public:
 	
 	// ---------------Component----------------
 
-	UPROPERTY(VisibleAnywhere, Category = "Component")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component")
 	class UStaticMeshComponent* MeshComp;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Component")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Component")
 	class UMaterialComponent* MatComp;
 
 	// ---------------Component---------------

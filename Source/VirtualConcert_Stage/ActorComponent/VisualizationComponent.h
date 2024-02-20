@@ -24,12 +24,35 @@ public:
 
 	class ACubeVisualization* CubeVisualization;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Variable")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
 	class USoundBase* Music;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Variable")
 	float MusicDuration;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	int32 NumberCubes = 96;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	float CubeSpace = 20.0f;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Variable")
+	TArray<class ASoundCube *> SoundCubes;
+
+	UPROPERTY(VisibleAnywhere, Category = "Variable")
+	float PositionInAudio;
+
 	// -------------------Variable -------------------
+	
+	// -------------------Function-------------------
+
+	UFUNCTION(BlueprintCallable)
+	TArray<class ASoundCube*> SpawnSoundCubes(int32 NumberOfCubes, float CubeSpacing);
+
+	//UFUNCTION(BlueprintCallable)
+	void Synesthesia_ScaleCubes(float MusicDur,float Percent, TArray<class ASoundCube*> SoundCube);
+
+	// -------------------Function-------------------
 
 
 };
