@@ -19,8 +19,17 @@ protected:
 public:	
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	
+	// -------------------Variable -------------------
+	class AActor* Owner;
 
+	class ACubeVisualization* CubeVisualization;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Variable")
+	class USoundBase* Music;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Variable")
+	float MusicDuration;
+	// -------------------Variable -------------------
 
 
 };
