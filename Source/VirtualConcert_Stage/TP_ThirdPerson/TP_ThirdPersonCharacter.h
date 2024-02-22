@@ -69,5 +69,10 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	//MY CODE
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Component")
+	class UAkAudioComponent* AkAudioComp;
+	//MY CODE
 };
 

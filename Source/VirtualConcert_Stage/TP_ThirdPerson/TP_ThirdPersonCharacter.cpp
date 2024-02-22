@@ -10,6 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "../ActorComponent/AkAudioComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -58,6 +59,9 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 	// MY CODE 
 	GetCapsuleComponent()->SetCollisionProfileName(FName("ReactPlayer"));
 	GetMesh()->SetCollisionProfileName(FName("NoCollision"));
+	
+	AkAudioComp = CreateDefaultSubobject<UAkAudioComponent>(TEXT("AkAudioComp"));
+	AkAudioComp->SetupAttachment(GetMesh());
 	// MY CODE 
 
 

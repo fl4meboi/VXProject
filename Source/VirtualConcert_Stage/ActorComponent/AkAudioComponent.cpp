@@ -4,18 +4,13 @@
 #include "ActorComponent/AkAudioComponent.h"
 #include <../../CoreUObject/Public/UObject/UObjectGlobals.h>
 
-UAkAudioComponent::UAkAudioComponent(const FObjectInitializer& ObjectInitializer) :
-	Super(ObjectInitializer)
-{
-
-
-}
-
 void UAkAudioComponent::BeginPlay()
 {
 	Super::BeginPlay();
 	static FName CBName("CallbackVFX");
 	BindCallback.BindUFunction(this, CBName);
+
+	UE_LOG(LogTemp, Warning, TEXT("Comment"));
 
 	PostAssociatedAkEvent(4, BindCallback);
 }

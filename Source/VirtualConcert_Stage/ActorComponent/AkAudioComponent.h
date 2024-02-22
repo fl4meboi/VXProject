@@ -14,7 +14,7 @@ class VIRTUALCONCERT_STAGE_API UAkAudioComponent : public UAkComponent
 {
 	GENERATED_BODY()
 public:
-	UAkAudioComponent(const class FObjectInitializer& ObjectInitializer);
+	
 
 	virtual void BeginPlay() override;
 	FOnAkPostEventCallback BindCallback;
