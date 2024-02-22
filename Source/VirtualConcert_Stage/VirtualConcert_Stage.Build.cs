@@ -10,7 +10,7 @@ public class VirtualConcert_Stage : ModuleRules
 
         PublicIncludePaths.AddRange(new string[] { "VirtualConcert_Stage" });
 
-        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" ,"AudioSynesthesia"});
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" ,"AudioSynesthesia", "AkAudio", "WwiseSoundEngine" });
 
 
         PrivateDependencyModuleNames.AddRange(new string[] {  });
