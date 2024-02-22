@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,unrealengine
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,unrealengine
-
+Plugins/Wwise/*
+Plugins/WwiseNiagara/*
+SessacFinalProject
 Content/StarterContent/*
 Content/Resources/*
 Content/AudioSynesthesia/*
