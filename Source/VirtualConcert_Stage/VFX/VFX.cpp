@@ -12,12 +12,14 @@ AVFX::AVFX()
 	VFXActiveComp= CreateDefaultSubobject<UVFXActiveComponent>(TEXT("VFXActiveComp"));
 
 	NiagaraComp = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraComp"));
+	NiagaraComp->bAutoActivate = false;
+
 }
 
 void AVFX::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 void AVFX::Tick(float DeltaTime)

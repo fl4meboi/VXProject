@@ -21,4 +21,13 @@ public:
 
 	UFUNCTION()
 	void CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInfo* CallbackInfo);
+
+	
+	// --------------Variable-------------
+	TArray<class AVFX*> Fireworks;
+	TArray<class AVFX*> BeamVer1;
+	TArray<class AVFX*> BeamVer2;
+	TArray<class AVFX*> Cloud;
+	// --------------Variable-------------
+
 };
