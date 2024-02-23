@@ -14,11 +14,20 @@ class VIRTUALCONCERT_STAGE_API UAkAudioComponent : public UAkComponent
 {
 	GENERATED_BODY()
 public:
-	UAkAudioComponent(const class FObjectInitializer& ObjectInitializer);
+	
 
 	virtual void BeginPlay() override;
 	FOnAkPostEventCallback BindCallback;
 
 	UFUNCTION()
 	void CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInfo* CallbackInfo);
+
+	
+	// --------------Variable-------------
+	TArray<class AVFX*> Fireworks;
+	TArray<class AVFX*> BeamVer1;
+	TArray<class AVFX*> BeamVer2;
+	TArray<class AVFX*> Cloud;
+	// --------------Variable-------------
+
 };

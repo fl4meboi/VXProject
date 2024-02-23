@@ -52,9 +52,15 @@
 			"Enabled": true
 		},
 		{
+<<<<<<< HEAD
 			"Name": "DMXFixtureUtility",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/4aa2e3e363f5499d98cf342d7e0b04e5"
+=======
+			"Name": "ElectronicNodes",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/5cb2a394d0c04e73891762be4cbd7216"
+>>>>>>> 467642e90615c2f5816afd77e896742901feea36
 		}
 	]
 }
