@@ -11,6 +11,11 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "../ActorComponent/AkAudioComponent.h"
+#include "../AudioSpectrum/MyAudioSynesthesia.h"
+#include <../../Engine/Public/EngineUtils.h>
+#include <../../Engine/Classes/Kismet/GameplayStatics.h>
+#include "../DMX/DMX.h"
+#include "../DMX/MySpotLightComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -82,58 +87,135 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+	
+	
+	
+	//MY CODE//
+#pragma region MyCode
+
+	
+	//BP_AudioSynesthesia 찾기
+	for (TActorIterator<AMyAudioSynesthesia> it(GetWorld()); it; ++it)
+	{
+			AudioSynesthesia = *it;
+	}
+
+	//BP_DMX 찾기
+	TArray<AActor*> AllActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADMX::StaticClass(), AllActors);
+	for (auto TempActor : AllActors)
+	{
+		DmxObjects.Add(Cast<ADMX>(TempActor));
+
+	}
+
+
+#pragma endregion MyCode
+	//MY CODE//
+
+
+
+
+
+
+
+
+
 }
 
+
+//MY CODE//
+#pragma region MyCode
 void ATP_ThirdPersonCharacter::UseNum1()
 {
+	for (auto TempObject : DmxObjects)
+	{
+		TempObject->SpotComp->SetClockLightColor();
+	}
 
 }
 
 void ATP_ThirdPersonCharacter::UseNum2()
 {
-
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 2"));
+	for (auto TempObject : DmxObjects)
+	{
+		TempObject->SpotComp->TurnDownLight();
+	}
 }
 
 void ATP_ThirdPersonCharacter::UseNum3()
 {
-
+	for (auto TempObject : DmxObjects)
+	{
+		TempObject->SpotComp->SetUnClockLightColor();
+	}
 }
 
 void ATP_ThirdPersonCharacter::UseNum4()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 4"));
+	for (auto TempObject : DmxObjects)
+	{
+		TempObject->SpotComp->TurnUnClockDirLight();
+	}
 
 }
 
 void ATP_ThirdPersonCharacter::UseNum5()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 5"));
 
 }
 
 void ATP_ThirdPersonCharacter::UseNum6()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 6"));
 
+	for (auto TempObject : DmxObjects)
+	{
+		TempObject->SpotComp->TurnClockDirLight();
+	}
 }
 
 void ATP_ThirdPersonCharacter::UseNum7()
 {
-
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 7"));
+	for (auto TempObject : DmxObjects)
+	{
+		TempObject->SpotComp->AddOuterAngle();
+	}
 }
 
 void ATP_ThirdPersonCharacter::UseNum8()
 {
-
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 8"));
+	for (auto TempObject : DmxObjects)
+	{
+		TempObject->SpotComp->TurnUpLight();
+	}
 }
 
 void ATP_ThirdPersonCharacter::UseNum9()
 {
-
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 9"));
+	for (auto TempObject : DmxObjects)
+	{
+		TempObject->SpotComp->SubOuterAngle();
+	}
 }
+
+#pragma endregion MyCode
+//MY CODE//
 // flipflop 박긴 해야함.
 void ATP_ThirdPersonCharacter::PlayMusic()
 {
 	
 	AkAudioComp->PlayAkEvent();
+	AudioSynesthesia->PlayMusic();
+	
 	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("P"));
+
 
 
 }
@@ -159,15 +241,17 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		//MY CODE//
 #pragma region MyCode
 
-		EnhancedInputComponent->BindAction(Num1Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum1);
-		EnhancedInputComponent->BindAction(Num2Action, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::UseNum2);
-		EnhancedInputComponent->BindAction(Num3Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum3);
-		EnhancedInputComponent->BindAction(Num4Action, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::UseNum4);
+		EnhancedInputComponent->BindAction(Num1Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum1);
+		EnhancedInputComponent->BindAction(Num2Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum2);
+		EnhancedInputComponent->BindAction(Num3Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum3);
+		EnhancedInputComponent->BindAction(Num4Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum4);
 		EnhancedInputComponent->BindAction(Num5Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum5);
-		EnhancedInputComponent->BindAction(Num6Action, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::UseNum6);
-		EnhancedInputComponent->BindAction(Num7Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum7);
-		EnhancedInputComponent->BindAction(Num8Action, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::UseNum8);
-		EnhancedInputComponent->BindAction(Num9Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum9);
+		EnhancedInputComponent->BindAction(Num6Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum6);
+		EnhancedInputComponent->BindAction(Num7Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum7);
+		EnhancedInputComponent->BindAction(Num8Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum8);
+		EnhancedInputComponent->BindAction(Num9Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum9);
+
+
 		EnhancedInputComponent->BindAction(PlayMusicAction, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::PlayMusic);
 #pragma endregion MyCode
 		//MY CODE//

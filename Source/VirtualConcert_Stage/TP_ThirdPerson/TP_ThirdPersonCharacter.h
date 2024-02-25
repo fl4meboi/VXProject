@@ -107,6 +107,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Component")
 	class UAkAudioComponent* AkAudioComp;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	class AMyAudioSynesthesia* AudioSynesthesia;
+
+	TArray<class ADMX*> DmxObjects;
+
+
 	void UseNum1();
 	void UseNum2();
 	void UseNum3();
