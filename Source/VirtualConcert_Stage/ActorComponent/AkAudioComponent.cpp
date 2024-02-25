@@ -13,8 +13,7 @@ void UAkAudioComponent::BeginPlay()
 	static FName CBName("CallbackVFX");
 	BindCallback.BindUFunction(this, CBName);
 
-
-	PostAssociatedAkEvent(4, BindCallback);
+	//PlayAkEvent();
 
 	//마커와 반응할 vfx 등록 찾기
 	TArray<AActor*> AllActors;
@@ -113,5 +112,11 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Stop"));
 	}
+
+}
+
+void UAkAudioComponent::PlayAkEvent()
+{
+	PostAssociatedAkEvent(4, BindCallback);
 
 }

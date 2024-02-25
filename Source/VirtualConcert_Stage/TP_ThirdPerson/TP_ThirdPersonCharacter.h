@@ -44,6 +44,34 @@ class ATP_ThirdPersonCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
+
+
+	//MY CODE//
+#pragma region MyCode
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* Num1Action;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* Num2Action;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* Num3Action;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* Num4Action;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* Num5Action;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* Num6Action;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* Num7Action;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* Num8Action;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* Num9Action;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* PlayMusicAction;
+
+#pragma endregion MyCode
+	//MY CODE//
+
 public:
 	ATP_ThirdPersonCharacter();
 	
@@ -70,9 +98,29 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
-	//MY CODE
+
+
+
+	//MY CODE//
+#pragma region MyCode
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Component")
 	class UAkAudioComponent* AkAudioComp;
-	//MY CODE
+	
+	void UseNum1();
+	void UseNum2();
+	void UseNum3();
+	void UseNum4();
+	void UseNum5();
+	void UseNum6();
+	void UseNum7();
+	void UseNum8();
+	void UseNum9();
+	void PlayMusic();
+#pragma endregion MyCode
+	//MY CODE//
+
+
+
 };
 

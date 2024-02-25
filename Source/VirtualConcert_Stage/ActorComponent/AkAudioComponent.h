@@ -29,5 +29,12 @@ public:
 	TArray<class AVFX*> BeamVer2;
 	TArray<class AVFX*> Cloud;
 	// --------------Variable-------------
+	
+
+	// --------------Function-------------
+	void PlayAkEvent();
+
+	// --------------Function-------------
+
 
 };

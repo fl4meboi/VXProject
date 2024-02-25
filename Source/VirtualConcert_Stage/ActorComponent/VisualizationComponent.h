@@ -39,8 +39,10 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Variable")
 	TArray<class ASoundCube *> SoundCubes;
 
-	UPROPERTY(VisibleAnywhere, Category = "Variable")
-	float PositionInAudio;
+
+	// 꼭 에디터에서 넣어주기
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	class UConstantQNRT* Synesthesia_Analysis;
 
 	// -------------------Variable -------------------
 	
@@ -49,8 +51,11 @@ public:
 	UFUNCTION(BlueprintCallable)
 	TArray<class ASoundCube*> SpawnSoundCubes(int32 NumberOfCubes, float CubeSpacing);
 
-	//UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable)
 	void Synesthesia_ScaleCubes(float MusicDur,float Percent, TArray<class ASoundCube*> SoundCube);
+
+	UFUNCTION()
+	void FOnAudioPlaybackPercent(const class USoundWave* PlayingSoundWave, const float PlaybackPercent);
 
 	// -------------------Function-------------------
 

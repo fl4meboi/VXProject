@@ -18,6 +18,14 @@ UVisualizationComponent::UVisualizationComponent()
 	{
 		Music = SoundCueAsset.Object;
 	}
+
+	static ConstructorHelpers::FObjectFinder<UConstantQNRT> QNRTAsset(TEXT("/Script/AudioSynesthesia.ConstantQNRT'/Game/__GDH/Sound/SNRT_CHERE.SNRT_CHERE'"));
+	if (QNRTAsset.Succeeded())
+	{
+		Synesthesia_Analysis = QNRTAsset.Object;
+	}
+
+
 }
 
 
@@ -43,6 +51,9 @@ void UVisualizationComponent::BeginPlay()
 
 	//Spawn the Audio Cube
 	SoundCubes = SpawnSoundCubes(NumberCubes, CubeSpace);
+
+	//Bind Cube Scaling Visualization to Audio Playback
+	CubeVisualization->AudioComp->OnAudioPlaybackPercent.AddDynamic(this, &UVisualizationComponent::FOnAudioPlaybackPercent);
 
 }
 
@@ -85,7 +96,33 @@ TArray<ASoundCube*> UVisualizationComponent::SpawnSoundCubes(int32 NumberOfCubes
 
 void UVisualizationComponent::Synesthesia_ScaleCubes(float MusicDur, float Percent, TArray<class ASoundCube*> SoundCube)
 {
-	PositionInAudio = MusicDur * Percent;
+	float PositionInAudio = MusicDur * Percent;
+	
+	//반환값을 담기 위한 변수
+	TArray<float> Frequencies;
 
+	Synesthesia_Analysis->GetNormalizedChannelConstantQAtTime(PositionInAudio, 0 ,Frequencies);
+
+	
+	float ScalingFactor = 3.0f;
+
+	for (int i = 0; i< Frequencies.Num();i++) 
+	{
+		float Temp = ScalingFactor*Frequencies[i];
+		Temp = FMath::Pow(Temp ,1.5f);
+		SoundCube[i]->MeshComp->SetRelativeScale3D(FVector(0.1f,0.1f,Temp));
+	}
+
+	
+
+}
+
+void UVisualizationComponent::FOnAudioPlaybackPercent(const USoundWave* PlayingSoundWave, const float PlaybackPercent)
+{
+
+	Synesthesia_ScaleCubes(MusicDuration, PlaybackPercent, SoundCubes);
+	//FString str = FString::Printf(TEXT("%f"), PlaybackPercent);
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, str);
+	
 }
 

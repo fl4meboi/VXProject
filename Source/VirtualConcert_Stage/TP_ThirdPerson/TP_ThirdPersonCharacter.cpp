@@ -84,6 +84,60 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 	}
 }
 
+void ATP_ThirdPersonCharacter::UseNum1()
+{
+
+}
+
+void ATP_ThirdPersonCharacter::UseNum2()
+{
+
+}
+
+void ATP_ThirdPersonCharacter::UseNum3()
+{
+
+}
+
+void ATP_ThirdPersonCharacter::UseNum4()
+{
+
+}
+
+void ATP_ThirdPersonCharacter::UseNum5()
+{
+
+}
+
+void ATP_ThirdPersonCharacter::UseNum6()
+{
+
+}
+
+void ATP_ThirdPersonCharacter::UseNum7()
+{
+
+}
+
+void ATP_ThirdPersonCharacter::UseNum8()
+{
+
+}
+
+void ATP_ThirdPersonCharacter::UseNum9()
+{
+
+}
+// flipflop 박긴 해야함.
+void ATP_ThirdPersonCharacter::PlayMusic()
+{
+	
+	AkAudioComp->PlayAkEvent();
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("P"));
+
+
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 
@@ -101,6 +155,24 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(UInputComponent* Player
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::Look);
+
+		//MY CODE//
+#pragma region MyCode
+
+		EnhancedInputComponent->BindAction(Num1Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum1);
+		EnhancedInputComponent->BindAction(Num2Action, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::UseNum2);
+		EnhancedInputComponent->BindAction(Num3Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum3);
+		EnhancedInputComponent->BindAction(Num4Action, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::UseNum4);
+		EnhancedInputComponent->BindAction(Num5Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum5);
+		EnhancedInputComponent->BindAction(Num6Action, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::UseNum6);
+		EnhancedInputComponent->BindAction(Num7Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum7);
+		EnhancedInputComponent->BindAction(Num8Action, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::UseNum8);
+		EnhancedInputComponent->BindAction(Num9Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum9);
+		EnhancedInputComponent->BindAction(PlayMusicAction, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::PlayMusic);
+#pragma endregion MyCode
+		//MY CODE//
+
+
 	}
 	else
 	{

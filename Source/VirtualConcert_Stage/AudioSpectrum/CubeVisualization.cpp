@@ -13,6 +13,9 @@ ACubeVisualization::ACubeVisualization()
 	SetRootComponent(AudioComp);
 
 	VisualizationComp = CreateDefaultSubobject<UVisualizationComponent>(TEXT("VisualizationComp"));
+
+	// 노래 중복 없애기 위함.(델리게이트는 실행되기 위함.)
+	AudioComp->SetVolumeMultiplier(0.01f);
 }
 
 void ACubeVisualization::BeginPlay()
