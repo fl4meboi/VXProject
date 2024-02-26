@@ -110,7 +110,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
 	class AMyAudioSynesthesia* AudioSynesthesia;
 
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
 	TArray<class ADMX*> DmxObjects;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	TArray<class ADisplayActor*> DisplayActorObjects;
 
 
 	void UseNum1();

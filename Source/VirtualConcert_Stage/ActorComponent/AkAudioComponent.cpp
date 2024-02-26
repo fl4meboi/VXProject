@@ -6,14 +6,19 @@
 #include "../VFX/VFX.h"
 #include <../../Engine/Classes/Kismet/GameplayStatics.h>
 #include "VFXActiveComponent.h"
+#include "../TP_ThirdPerson/TP_ThirdPersonCharacter.h"
+#include "../MaterialActor/DisplayActor.h"
+#include "MaterialComponent.h"
 
 void UAkAudioComponent::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	Player = Cast<ATP_ThirdPersonCharacter>(GetOwner());
+	
 	static FName CBName("CallbackVFX");
 	BindCallback.BindUFunction(this, CBName);
 
-	//PlayAkEvent();
 
 	//마커와 반응할 vfx 등록 찾기
 	TArray<AActor*> AllActors;
@@ -57,6 +62,8 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		{
 			ActiveVfx->VFXActiveComp->ActiveVFX();
 		}
+		Player->DisplayActorObjects[0]->MatComp->MarkerSharp();
+
 	}
 	else if (CBInfo->Label == "Tempo")
 	{
@@ -65,6 +72,8 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		{
 			ActiveVfx->VFXActiveComp->ActiveVFX();
 		}
+		Player->DisplayActorObjects[0]->MatComp->MarkerTempo();
+
 	}
 	else if (CBInfo->Label == "Add")
 	{
@@ -81,15 +90,19 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		{
 			ActiveVfx->VFXActiveComp->ActiveVFX();
 		}
+		Player->DisplayActorObjects[0]->MatComp->MarkerRaise();
 	}
 	else if (CBInfo->Label == "Electronic")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Electronic"));
+		Player->DisplayActorObjects[0]->MatComp->MarkerElectronic();
+
+
+
 	}
 	else if (CBInfo->Label == "Swayle")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Swayle"));
-
 	}
 	else if (CBInfo->Label == "Yall")
 	{
@@ -106,6 +119,7 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 	else if (CBInfo->Label == "Ready")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Ready"));
+		Player->DisplayActorObjects[0]->MatComp->MarkerReady();
 
 	}
 	else if (CBInfo->Label == "Stop")

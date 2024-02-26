@@ -28,6 +28,10 @@ public:
 	TArray<class AVFX*> BeamVer1;
 	TArray<class AVFX*> BeamVer2;
 	TArray<class AVFX*> Cloud;
+	
+	class ATP_ThirdPersonCharacter* Player;
+
+
 	// --------------Variable-------------
 	
 
