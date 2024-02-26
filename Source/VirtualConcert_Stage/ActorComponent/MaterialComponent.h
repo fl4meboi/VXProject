@@ -24,6 +24,10 @@ public:
 	class AActor* Owner;
 
 	UPROPERTY(VisibleAnywhere, Category = "Variable")
+	class ADisplayActor* DisplayActor;
+
+
+	UPROPERTY(VisibleAnywhere, Category = "Variable")
 	class UMaterialInstanceDynamic* DynMat;
 	
 	//상태머신 
@@ -31,6 +35,10 @@ public:
 
 	float CurrentA = 1.0f;
 
+	UPROPERTY(VisibleAnywhere, Category = "Variable")
+	TArray<class UMaterialInterface *> SrcMaterials;
+	UPROPERTY(VisibleAnywhere, Category = "Variable")
+	TArray<class UMaterialInstanceDynamic *> DynMats;
 	// -------------------Varaible-----------------
 	 
 	
@@ -47,7 +55,7 @@ public:
 	// 비쥬얼 오디오 임시 연결용 BlueprintCallable	
 	
 	UFUNCTION(BlueprintCallable)
-	void OnBindWithBlueprint();
+	void OnEvent();
 	
 	void MaterialTimeReset();
 
@@ -60,6 +68,23 @@ public:
 
 	void SetColor(FLinearColor HSVtoRGB);
 
+
+	// 마커와 반응할 머티리얼 함수
+	void MarkerSharp();
+	
+	void MarkerTempo();
+
+	void MarkerRaise();
+
+	void MarkerElectronic();
+
+	void RotateFlower(float Delta);
+
+	bool bIsRotateFlower = false;
+
+	bool RaiseLerp = false;
+
+	void MarkerReady();
 	// -------------------Function-----------------
 
 

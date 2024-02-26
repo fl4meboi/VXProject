@@ -16,6 +16,8 @@
 #include <../../Engine/Classes/Kismet/GameplayStatics.h>
 #include "../DMX/DMX.h"
 #include "../DMX/MySpotLightComponent.h"
+#include "../MaterialActor/DisplayActor.h"
+#include "../ActorComponent/MaterialComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -102,14 +104,21 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 
 	//BP_DMX Ã£±â
 	TArray<AActor*> AllActors;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADMX::StaticClass(), AllActors);
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), AllActors);
 	for (auto TempActor : AllActors)
 	{
-		DmxObjects.Add(Cast<ADMX>(TempActor));
+		
+		if (auto Temp = Cast<ADMX>(TempActor))
+		{
+			DmxObjects.Add(Temp);
 
+		}
+		else if (auto Temp2 = Cast<ADisplayActor>(TempActor))
+		{
+			DisplayActorObjects.Add(Temp2);
+
+		}
 	}
-
-
 #pragma endregion MyCode
 	//MY CODE//
 
@@ -214,6 +223,12 @@ void ATP_ThirdPersonCharacter::PlayMusic()
 	AkAudioComp->PlayAkEvent();
 	AudioSynesthesia->PlayMusic();
 	
+	for (auto TempActor : DisplayActorObjects)
+	{
+		TempActor->MatComp->OnEvent();
+	}
+
+
 	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("P"));
 
 
