@@ -102,7 +102,7 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 			AudioSynesthesia = *it;
 	}
 
-	//BP_DMX 찾기
+	//BP_DMX 찾기 , display 찾기
 	TArray<AActor*> AllActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), AllActors);
 	for (auto TempActor : AllActors)
