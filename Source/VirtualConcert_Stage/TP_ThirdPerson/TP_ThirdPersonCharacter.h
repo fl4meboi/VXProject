@@ -115,6 +115,8 @@ public:
 	TArray<class ADMX*> DmxObjects;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
 	TArray<class ADisplayActor*> DisplayActorObjects;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	TArray<class ADiveController*> DiveControllObjects;
 
 
 	void UseNum1();

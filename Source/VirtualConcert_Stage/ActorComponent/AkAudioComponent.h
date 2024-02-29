@@ -28,6 +28,8 @@ public:
 	TArray<class AVFX*> BeamVer1;
 	TArray<class AVFX*> BeamVer2;
 	TArray<class AVFX*> Cloud;
+	TArray<class AVFX*> Fish;
+	TArray<class AVFX*> Beam;
 	
 	class ATP_ThirdPersonCharacter* Player;
 
@@ -37,7 +39,10 @@ public:
 
 	// --------------Function-------------
 	void PlayAkEvent();
-
+	void ActiveFish();
+	void ModifiedNiagara();
+	void ActiveBeam();
+	void ModifyLocationNiagara();
 	// --------------Function-------------
 
 

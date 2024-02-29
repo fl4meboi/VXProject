@@ -5,7 +5,6 @@
 #include "Components/ActorComponent.h"
 #include "VFXActiveComponent.generated.h"
 
-
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class VIRTUALCONCERT_STAGE_API UVFXActiveComponent : public UActorComponent
 {
@@ -29,7 +28,8 @@ public:
 	// ---------------Function-----------
 	
 	void ActiveVFX();
-	
+	void ModifedUserParameter();
+	void ModifyLocation(FVector startLoc, FVector dir, float speed, int32 segment, float interval);
 	// ---------------Function-----------
 
 

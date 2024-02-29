@@ -43,6 +43,14 @@ void UAkAudioComponent::BeginPlay()
 		{
 			Cloud.Add(Cast<AVFX>(TempVfx));
 		}
+		else if (TempVfx->GetName().Contains("BP_Fish") == true)
+		{
+			Fish.Add(Cast<AVFX>(TempVfx));
+		}
+		else if (TempVfx->GetName().Contains("BP_Beam") == true)
+		{
+			Beam.Add(Cast<AVFX>(TempVfx));
+		}
 	}
 
 	// ======================등록 검색===========================
@@ -62,7 +70,11 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		{
 			ActiveVfx->VFXActiveComp->ActiveVFX();
 		}
+		ActiveFish();
+
 		Player->DisplayActorObjects[0]->MatComp->MarkerSharp();
+
+		
 
 	}
 	else if (CBInfo->Label == "Tempo")
@@ -132,5 +144,55 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 void UAkAudioComponent::PlayAkEvent()
 {
 	PostAssociatedAkEvent(4, BindCallback);
+
+}
+
+void UAkAudioComponent::ActiveFish()
+{
+	for (auto ActiveVfx : Fish)
+	{
+		ActiveVfx->VFXActiveComp->ActiveVFX();
+	}
+
+}
+
+void UAkAudioComponent::ModifiedNiagara()
+{
+	for (auto ActiveVfx : Fish)
+	{
+		ActiveVfx->VFXActiveComp->ModifedUserParameter();
+	}
+
+}
+
+void UAkAudioComponent::ActiveBeam()
+{
+	for (auto ActiveVfx : Beam)
+	{
+		ActiveVfx->VFXActiveComp->ActiveVFX();
+	}
+
+}
+
+void UAkAudioComponent::ModifyLocationNiagara()
+{
+	for (auto ActiveVfx : Beam)
+	{
+		FVector StartLoc = ActiveVfx->GetActorLocation();
+		FVector Dir = ActiveVfx->GetActorForwardVector();
+		float Speed = 1000.0f;
+		int32 Segment = 10;
+		float Interval = 0.5f;
+		ActiveVfx->VFXActiveComp->ModifyLocation(StartLoc,Dir,Speed,Segment,Interval);
+	}
+	//for (auto ActiveVfx : Fish)
+	//{
+	//	FVector StartLoc = ActiveVfx->GetActorLocation();
+	//	FVector Dir = ActiveVfx->GetActorForwardVector();
+	//	float Speed = 1000.0f;
+	//	int32 Segment = 10;
+	//	float Interval = 0.5f;
+	//	ActiveVfx->VFXActiveComp->ModifyLocation(StartLoc, Dir, Speed, Segment, Interval);
+	//}
 
 }

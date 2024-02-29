@@ -60,6 +60,10 @@
 			"Name": "DMXFixtureUtility",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/4aa2e3e363f5499d98cf342d7e0b04e5"
+		},
+		{
+			"Name": "ExampleCustomDataInterface",
+			"Enabled": true
 		}
 	]
 }
