@@ -9,6 +9,7 @@
 #include "../TP_ThirdPerson/TP_ThirdPersonCharacter.h"
 #include "../MaterialActor/DisplayActor.h"
 #include "MaterialComponent.h"
+#include "../AI/AI.h"
 
 void UAkAudioComponent::BeginPlay()
 {
@@ -71,12 +72,256 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 			ActiveVfx->VFXActiveComp->ActiveVFX();
 		}
 		ActiveFish();
-
-		Player->DisplayActorObjects[0]->MatComp->MarkerSharp();
-
+		for (auto ActiveDisplay : Player->DisplayActorObjects)
+		{
+			ActiveDisplay->MatComp->MarkerSharp();
+		}
 		
 
 	}
+	else if (CBInfo->Label == "Dj")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Dj"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->bIsFade = true;
+		}
+
+	}
+	else if (CBInfo->Label == "DjOff")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("DjOff"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->bIsEnd = true;
+		}
+
+	}
+	else if (CBInfo->Label == "type2")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type2"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(2);
+		}
+
+	}
+	else if (CBInfo->Label == "type3")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type3"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(3);
+		}
+
+	}
+	else if (CBInfo->Label == "type4")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type4"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(4);
+		}
+
+	}
+	else if (CBInfo->Label == "type5")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type5"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(5);
+		}
+
+	}
+	else if (CBInfo->Label == "type6")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type6"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(6);
+		}
+
+	}
+	else if (CBInfo->Label == "type7")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type7"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(7);
+		}
+
+	}
+	else if (CBInfo->Label == "type8")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type8"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(8);
+		}
+
+	}
+	else if (CBInfo->Label == "type9")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type9"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(9);
+		}
+
+	}
+	else if (CBInfo->Label == "type10")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type10"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(10);
+		}
+
+	}
+	else if (CBInfo->Label == "type11")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type11"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(11);
+		}
+
+		}
+	else if (CBInfo->Label == "type12")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type12"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(12);
+		}
+
+		}
+	else if (CBInfo->Label == "type13")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type13"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(13);
+		}
+
+		}
+	else if (CBInfo->Label == "type14")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type14"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(14);
+		}
+
+		}
+	else if (CBInfo->Label == "type15")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type15"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(15);
+		}
+
+		}
+	else if (CBInfo->Label == "type16")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type16"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(16);
+		}
+
+		}
+	else if (CBInfo->Label == "type17")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type17"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(17);
+		}
+
+	}
+	else if (CBInfo->Label == "type18")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type18"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(18);
+		}
+
+	}
+	else if (CBInfo->Label == "type19")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type19"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(19);
+		}
+		
+	}
+	else if (CBInfo->Label == "type20")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type20"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(20);
+		}
+
+	}
+	else if (CBInfo->Label == "type21")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type21"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(21);
+		}
+
+	}
+	else if (CBInfo->Label == "type22")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type22"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(22);
+		}
+
+		}
+	else if (CBInfo->Label == "type23")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type23"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(23);
+		}
+
+		}
+	else if (CBInfo->Label == "type24")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type24"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(24);
+		}
+
+		}
+	else if (CBInfo->Label == "type25")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type25"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(25);
+		}
+
+		}
+	else if (CBInfo->Label == "type26")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("type26"));
+		for (auto ActiveAI : Player->AIObjects)
+		{
+			ActiveAI->PlayMontageAction(26);
+		}
+
+		}
 	else if (CBInfo->Label == "Tempo")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Tempo"));
@@ -84,7 +329,11 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		{
 			ActiveVfx->VFXActiveComp->ActiveVFX();
 		}
-		Player->DisplayActorObjects[0]->MatComp->MarkerTempo();
+		for (auto ActiveDisplay : Player->DisplayActorObjects)
+		{
+			ActiveDisplay->MatComp->MarkerTempo();
+		}
+
 
 	}
 	else if (CBInfo->Label == "Add")
@@ -102,14 +351,22 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		{
 			ActiveVfx->VFXActiveComp->ActiveVFX();
 		}
-		Player->DisplayActorObjects[0]->MatComp->MarkerRaise();
+		for (auto ActiveDisplay : Player->DisplayActorObjects)
+		{
+			ActiveDisplay->MatComp->MarkerRaise();
+		}
+		
+
+
 	}
 	else if (CBInfo->Label == "Electronic")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Electronic"));
-		Player->DisplayActorObjects[0]->MatComp->MarkerElectronic();
-
-
+		for (auto ActiveDisplay : Player->DisplayActorObjects)
+		{
+			ActiveDisplay->MatComp->MarkerElectronic();
+		}
+		
 
 	}
 	else if (CBInfo->Label == "Swayle")
@@ -131,7 +388,10 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 	else if (CBInfo->Label == "Ready")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Ready"));
-		Player->DisplayActorObjects[0]->MatComp->MarkerReady();
+		for (auto ActiveDisplay : Player->DisplayActorObjects)
+		{
+			ActiveDisplay->MatComp->MarkerReady();
+		}
 
 	}
 	else if (CBInfo->Label == "Stop")
@@ -164,7 +424,7 @@ void UAkAudioComponent::ModifiedNiagara()
 	}
 
 }
-
+// 일단 안쓸것
 void UAkAudioComponent::ActiveBeam()
 {
 	for (auto ActiveVfx : Beam)
@@ -173,7 +433,7 @@ void UAkAudioComponent::ActiveBeam()
 	}
 
 }
-
+// 일단 안쓸것
 void UAkAudioComponent::ModifyLocationNiagara()
 {
 	for (auto ActiveVfx : Beam)

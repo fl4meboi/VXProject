@@ -20,6 +20,7 @@
 #include "../ActorComponent/MaterialComponent.h"
 #include "../Dive/DiveLED.h"
 #include "../Dive/DiveController.h"
+#include "../AI/AI.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -104,7 +105,7 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 			AudioSynesthesia = *it;
 	}
 
-	//BP_DMX 찾기 , display 찾기 , DiveLed 찾기
+	//BP_DMX 찾기 , display 찾기 , DiveLed 찾기 , AI 찾기
 	TArray<AActor*> AllActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), AllActors);
 	for (auto TempActor : AllActors)
@@ -123,6 +124,10 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 		else if (auto Temp3 = Cast<ADiveController>(TempActor))
 		{
 			DiveControllObjects.Add(Temp3);
+		}
+		else if (auto Temp4 = Cast<AAI>(TempActor))
+		{
+			AIObjects.Add(Temp4);
 		}
 	}
 #pragma endregion MyCode
@@ -184,14 +189,23 @@ void ATP_ThirdPersonCharacter::UseNum4()
 	{
 		TempObject->SpotComp->TurnUnClockDirLight();
 	}*/
-	AkAudioComp->ActiveBeam();
+
+	for (auto TempObject : AIObjects)
+	{
+		TempObject->bIsFade = true;
+	}
 }
 
 void ATP_ThirdPersonCharacter::UseNum5()
 {
 	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 5"));
-	AkAudioComp->ModifyLocationNiagara();
 
+	for (auto TempObject : AIObjects)
+	{
+		TempObject->PlayMontageAction(Count);
+	}
+	
+	Count +=1;  	
 }
 
 void ATP_ThirdPersonCharacter::UseNum6()
@@ -277,7 +291,7 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		EnhancedInputComponent->BindAction(Num2Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum2);
 		EnhancedInputComponent->BindAction(Num3Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum3);
 		EnhancedInputComponent->BindAction(Num4Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum4);
-		EnhancedInputComponent->BindAction(Num5Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum5);
+		EnhancedInputComponent->BindAction(Num5Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum5);
 		EnhancedInputComponent->BindAction(Num6Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum6);
 		EnhancedInputComponent->BindAction(Num7Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum7);
 		EnhancedInputComponent->BindAction(Num8Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum8);
