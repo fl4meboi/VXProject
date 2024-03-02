@@ -18,6 +18,9 @@
 #include "../DMX/MySpotLightComponent.h"
 #include "../MaterialActor/DisplayActor.h"
 #include "../ActorComponent/MaterialComponent.h"
+#include "../Dive/DiveLED.h"
+#include "../Dive/DiveController.h"
+#include "../AI/AI.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -102,7 +105,7 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 			AudioSynesthesia = *it;
 	}
 
-	//BP_DMX 찾기 , display 찾기
+	//BP_DMX 찾기 , display 찾기 , DiveLed 찾기 , AI 찾기
 	TArray<AActor*> AllActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), AllActors);
 	for (auto TempActor : AllActors)
@@ -117,6 +120,14 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 		{
 			DisplayActorObjects.Add(Temp2);
 
+		}
+		else if (auto Temp3 = Cast<ADiveController>(TempActor))
+		{
+			DiveControllObjects.Add(Temp3);
+		}
+		else if (auto Temp4 = Cast<AAI>(TempActor))
+		{
+			AIObjects.Add(Temp4);
 		}
 	}
 #pragma endregion MyCode
@@ -137,44 +148,64 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 #pragma region MyCode
 void ATP_ThirdPersonCharacter::UseNum1()
 {
-	for (auto TempObject : DmxObjects)
+	/*for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->SetClockLightColor();
+	
+	}*/
+	for (auto TempObject : DiveControllObjects)
+	{
+		TempObject->RotateAllLED();
+
 	}
+
 
 }
 
 void ATP_ThirdPersonCharacter::UseNum2()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 2"));
+	/*GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 2"));
 	for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->TurnDownLight();
-	}
+	}*/
+	AkAudioComp->ActiveFish();
 }
 
 void ATP_ThirdPersonCharacter::UseNum3()
 {
-	for (auto TempObject : DmxObjects)
+	/*for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->SetUnClockLightColor();
-	}
+	}*/
+	AkAudioComp->ModifiedNiagara();
+
 }
 
 void ATP_ThirdPersonCharacter::UseNum4()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 4"));
+	/*GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 4"));
 	for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->TurnUnClockDirLight();
-	}
+	}*/
 
+	for (auto TempObject : AIObjects)
+	{
+		TempObject->bIsFade = true;
+	}
 }
 
 void ATP_ThirdPersonCharacter::UseNum5()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 5"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 5"));
 
+	for (auto TempObject : AIObjects)
+	{
+		TempObject->PlayMontageAction(Count);
+	}
+	
+	Count +=1;  	
 }
 
 void ATP_ThirdPersonCharacter::UseNum6()

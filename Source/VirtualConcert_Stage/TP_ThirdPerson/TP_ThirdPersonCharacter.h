@@ -115,7 +115,10 @@ public:
 	TArray<class ADMX*> DmxObjects;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
 	TArray<class ADisplayActor*> DisplayActorObjects;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	TArray<class ADiveController*> DiveControllObjects;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	TArray<class AAI*> AIObjects;
 
 	void UseNum1();
 	void UseNum2();
@@ -127,6 +130,10 @@ public:
 	void UseNum8();
 	void UseNum9();
 	void PlayMusic();
+
+	//test
+	int32 Count = 2;
+
 #pragma endregion MyCode
 	//MY CODE//
 
