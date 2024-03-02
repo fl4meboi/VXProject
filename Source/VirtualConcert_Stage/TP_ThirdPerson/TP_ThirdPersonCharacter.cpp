@@ -153,11 +153,7 @@ void ATP_ThirdPersonCharacter::UseNum1()
 		TempObject->SpotComp->SetClockLightColor();
 	
 	}*/
-	for (auto TempObject : DiveControllObjects)
-	{
-		TempObject->RotateAllLED();
-
-	}
+	
 
 
 }
@@ -189,33 +185,28 @@ void ATP_ThirdPersonCharacter::UseNum4()
 	{
 		TempObject->SpotComp->TurnUnClockDirLight();
 	}*/
-
-	for (auto TempObject : AIObjects)
-	{
-		TempObject->bIsFade = true;
-	}
+	AkAudioComp->ActiveFirewoks();
+	
 }
 
 void ATP_ThirdPersonCharacter::UseNum5()
 {
 	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 5"));
+	AkAudioComp->ActiveFirewoks2();
 
-	for (auto TempObject : AIObjects)
-	{
-		TempObject->PlayMontageAction(Count);
-	}
-	
-	Count +=1;  	
+
 }
 
 void ATP_ThirdPersonCharacter::UseNum6()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 6"));
 
-	for (auto TempObject : DmxObjects)
+	/*for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->TurnClockDirLight();
-	}
+	}*/
+	AkAudioComp->ActiveFirewoksDelay();
+
 }
 
 void ATP_ThirdPersonCharacter::UseNum7()
@@ -253,7 +244,7 @@ void ATP_ThirdPersonCharacter::PlayMusic()
 	
 	AkAudioComp->PlayAkEvent();
 	AudioSynesthesia->PlayMusic();
-	
+	PlaySequenceDMX();
 	for (auto TempActor : DisplayActorObjects)
 	{
 		TempActor->MatComp->OnEvent();
@@ -264,6 +255,15 @@ void ATP_ThirdPersonCharacter::PlayMusic()
 
 
 
+}
+
+void ATP_ThirdPersonCharacter::RotateLED()
+{
+	for (auto TempObject : DiveControllObjects)
+	{
+		TempObject->RotateAllLED();
+
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////

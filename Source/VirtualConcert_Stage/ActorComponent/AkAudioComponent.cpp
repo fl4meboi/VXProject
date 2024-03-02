@@ -10,6 +10,17 @@
 #include "../MaterialActor/DisplayActor.h"
 #include "MaterialComponent.h"
 #include "../AI/AI.h"
+#include <../../LevelSequence/Public/LevelSequence.h>
+#include <../../MovieScene/Public/MovieSceneSequencePlaybackSettings.h>
+#include <../../LevelSequence/Public/LevelSequencePlayer.h>
+
+
+UAkAudioComponent::UAkAudioComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+{
+	PrimaryComponentTick.bCanEverTick = true;
+	
+
+}
 
 void UAkAudioComponent::BeginPlay()
 {
@@ -32,6 +43,14 @@ void UAkAudioComponent::BeginPlay()
 		{
 				Fireworks.Add(Cast<AVFX>(TempVfx));
 		}
+		else if (TempVfx->GetName().Contains("BP_Ver2Fireworks") == true)
+		{
+			Fireworks2.Add(Cast<AVFX>(TempVfx));
+		}
+		else if (TempVfx->GetName().Contains("BP_DelayFireworks") == true)
+		{
+			FireworksDelay.Add(Cast<AVFX>(TempVfx));
+		}
 		else if (TempVfx->GetName().Contains("BP_BeamVer1") == true)
 		{
 			BeamVer1.Add(Cast<AVFX>(TempVfx));
@@ -52,9 +71,25 @@ void UAkAudioComponent::BeginPlay()
 		{
 			Beam.Add(Cast<AVFX>(TempVfx));
 		}
+		else if (TempVfx->GetName().Contains("BP_Assey") == true)
+		{
+			Assey.Add(Cast<AVFX>(TempVfx));
+		}
+		else if (TempVfx->GetName().Contains("BP_Swayle") == true)
+		{
+			Swayle.Add(Cast<AVFX>(TempVfx));
+		}
+		else if (TempVfx->GetName().Contains("BP_Yall") == true)
+		{
+			Yall.Add(Cast<AVFX>(TempVfx));
+		}
+
+
 	}
 
 	// ======================등록 검색===========================
+
+
 
 }
 
@@ -333,7 +368,7 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		{
 			ActiveDisplay->MatComp->MarkerTempo();
 		}
-
+		ActiveFirewoks2();
 
 	}
 	else if (CBInfo->Label == "Add")
@@ -355,7 +390,7 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		{
 			ActiveDisplay->MatComp->MarkerRaise();
 		}
-		
+		ActiveFirewoks();
 
 
 	}
@@ -366,20 +401,24 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		{
 			ActiveDisplay->MatComp->MarkerElectronic();
 		}
-		
-
+		ActiveFirewoksDelay();
+		Player->RotateLED();
+		Player->PlaySequenceLEDVER1();
 	}
 	else if (CBInfo->Label == "Swayle")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Swayle"));
+		ActiveSwayle();
 	}
 	else if (CBInfo->Label == "Yall")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Yall"));
+		ActiveYall();
 	}
 	else if (CBInfo->Label == "Assey")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Assey"));
+		ActiveAssey();
 	}
 	else if (CBInfo->Label == "Tempo")
 	{
@@ -397,6 +436,7 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 	else if (CBInfo->Label == "Stop")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Stop"));
+		Player->PlaySequenceLEDVER2();
 	}
 
 }
@@ -410,6 +450,45 @@ void UAkAudioComponent::PlayAkEvent()
 void UAkAudioComponent::ActiveFish()
 {
 	for (auto ActiveVfx : Fish)
+	{
+		ActiveVfx->VFXActiveComp->ActiveVFX();
+	}
+
+}
+
+void UAkAudioComponent::ActiveFirewoks()
+{
+	for (auto ActiveVfx : Fireworks)
+	{
+		ActiveVfx->VFXActiveComp->ActiveVFX();
+	}
+
+}
+
+void UAkAudioComponent::ActiveFirewoks2()
+{
+	for (auto ActiveVfx : Fireworks)
+	{
+		ActiveVfx->VFXActiveComp->ActiveVFX();
+	}
+
+	FTimerHandle handle;
+	Player->GetWorldTimerManager().SetTimer(handle, FTimerDelegate::CreateLambda([&]
+	{
+
+		for (auto ActiveVfx : Fireworks2)
+		{
+			ActiveVfx->VFXActiveComp->ActiveVFX();
+		}
+
+	}), 1.0f, false);
+
+
+}
+
+void UAkAudioComponent::ActiveFirewoksDelay()
+{
+	for (auto ActiveVfx : FireworksDelay)
 	{
 		ActiveVfx->VFXActiveComp->ActiveVFX();
 	}
@@ -455,4 +534,28 @@ void UAkAudioComponent::ModifyLocationNiagara()
 	//	ActiveVfx->VFXActiveComp->ModifyLocation(StartLoc, Dir, Speed, Segment, Interval);
 	//}
 
+}
+
+void UAkAudioComponent::ActiveAssey()
+{
+	for (auto ActiveVfx : Assey)
+	{
+		ActiveVfx->VFXActiveComp->ActiveVFX();
+	}
+}
+
+void UAkAudioComponent::ActiveSwayle()
+{
+	for (auto ActiveVfx : Swayle)
+	{
+		ActiveVfx->VFXActiveComp->ActiveVFX();
+	}
+}
+
+void UAkAudioComponent::ActiveYall()
+{
+	for (auto ActiveVfx : Yall)
+	{
+		ActiveVfx->VFXActiveComp->ActiveVFX();
+	}
 }

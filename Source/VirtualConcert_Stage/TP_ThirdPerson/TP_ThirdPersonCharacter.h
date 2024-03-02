@@ -130,7 +130,17 @@ public:
 	void UseNum8();
 	void UseNum9();
 	void PlayMusic();
+	void RotateLED();
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlaySequenceLEDVER1();
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlaySequenceLEDVER2();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlaySequenceDMX();
+	
+	
 	//test
 	int32 Count = 2;
 
