@@ -132,14 +132,25 @@ public:
 	void PlayMusic();
 	void RotateLED();
 	UFUNCTION(BlueprintImplementableEvent)
-	void PlaySequenceLEDVER1();
+	void PlaySequenceLEDLoc();
 	
 	UFUNCTION(BlueprintImplementableEvent)
-	void PlaySequenceLEDVER2();
+	void ReverseSequenceLEDLoc();
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlaySequenceLEDScale();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void ReverseSequenceLEDScale();
+	
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlaySequenceDMX();
 	
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlaySequenceSharkDive();
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlaySequenceSharkWave();
 	
 	//test
 	int32 Count = 2;

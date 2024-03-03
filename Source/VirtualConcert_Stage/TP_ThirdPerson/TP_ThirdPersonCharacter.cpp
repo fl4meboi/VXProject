@@ -244,7 +244,6 @@ void ATP_ThirdPersonCharacter::PlayMusic()
 	
 	AkAudioComp->PlayAkEvent();
 	AudioSynesthesia->PlayMusic();
-	PlaySequenceDMX();
 	for (auto TempActor : DisplayActorObjects)
 	{
 		TempActor->MatComp->OnEvent();

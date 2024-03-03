@@ -51,25 +51,9 @@ void UAkAudioComponent::BeginPlay()
 		{
 			FireworksDelay.Add(Cast<AVFX>(TempVfx));
 		}
-		else if (TempVfx->GetName().Contains("BP_BeamVer1") == true)
-		{
-			BeamVer1.Add(Cast<AVFX>(TempVfx));
-		}
-		else if (TempVfx->GetName().Contains("BP_BeamVer2") == true)
-		{
-			BeamVer2.Add(Cast<AVFX>(TempVfx));
-		}
-		else if (TempVfx->GetName().Contains("BP_Cloud") == true)
-		{
-			Cloud.Add(Cast<AVFX>(TempVfx));
-		}
 		else if (TempVfx->GetName().Contains("BP_Fish") == true)
 		{
 			Fish.Add(Cast<AVFX>(TempVfx));
-		}
-		else if (TempVfx->GetName().Contains("BP_Beam") == true)
-		{
-			Beam.Add(Cast<AVFX>(TempVfx));
 		}
 		else if (TempVfx->GetName().Contains("BP_Assey") == true)
 		{
@@ -82,6 +66,10 @@ void UAkAudioComponent::BeginPlay()
 		else if (TempVfx->GetName().Contains("BP_Yall") == true)
 		{
 			Yall.Add(Cast<AVFX>(TempVfx));
+		}
+		else if (TempVfx->GetName().Contains("BP_Ver2Fish") == true)
+		{
+			Fish2.Add(Cast<AVFX>(TempVfx));
 		}
 
 
@@ -102,10 +90,7 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 	if (CBInfo->Label == "Sharp")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Sharp"));
-		for(auto ActiveVfx : Fireworks)
-		{
-			ActiveVfx->VFXActiveComp->ActiveVFX();
-		}
+		ActiveFirewoks();
 		ActiveFish();
 		for (auto ActiveDisplay : Player->DisplayActorObjects)
 		{
@@ -360,10 +345,6 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 	else if (CBInfo->Label == "Tempo")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Tempo"));
-		for (auto ActiveVfx : BeamVer1)
-		{
-			ActiveVfx->VFXActiveComp->ActiveVFX();
-		}
 		for (auto ActiveDisplay : Player->DisplayActorObjects)
 		{
 			ActiveDisplay->MatComp->MarkerTempo();
@@ -374,18 +355,12 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 	else if (CBInfo->Label == "Add")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Add"));
-		for (auto ActiveVfx : BeamVer2)
-		{
-			ActiveVfx->VFXActiveComp->ActiveVFX();
-		}
+		
 	}
 	else if (CBInfo->Label == "Raise")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Raise"));
-		for (auto ActiveVfx : Cloud)
-		{
-			ActiveVfx->VFXActiveComp->ActiveVFX();
-		}
+		
 		for (auto ActiveDisplay : Player->DisplayActorObjects)
 		{
 			ActiveDisplay->MatComp->MarkerRaise();
@@ -402,8 +377,7 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 			ActiveDisplay->MatComp->MarkerElectronic();
 		}
 		ActiveFirewoksDelay();
-		Player->RotateLED();
-		Player->PlaySequenceLEDVER1();
+
 	}
 	else if (CBInfo->Label == "Swayle")
 	{
@@ -436,8 +410,60 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 	else if (CBInfo->Label == "Stop")
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Stop"));
-		Player->PlaySequenceLEDVER2();
 	}
+	else if (CBInfo->Label == "Fish")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Fish"));
+		ActiveFish();
+	}
+	else if (CBInfo->Label == "Fish2")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Fish2"));
+		ActiveFish2();
+
+	}
+	else if (CBInfo->Label == "LEDRotate")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("LEDRotate"));
+		Player->RotateLED();
+
+	}
+	else if (CBInfo->Label == "LEDLoc")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("LEDLoc"));
+		Player->PlaySequenceLEDLoc();
+	}
+	else if (CBInfo->Label == "LEDLocRev")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("LEDLocRev"));
+		Player->ReverseSequenceLEDLoc();
+	}
+	else if (CBInfo->Label == "LEDScale")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("LEDScale"));
+		Player->PlaySequenceLEDScale();
+	}
+	else if (CBInfo->Label == "LEDScaleRev")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("LEDScaleRev"));
+		Player->ReverseSequenceLEDScale();
+	}
+	else if (CBInfo->Label == "DMX")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("DMX"));
+		Player->PlaySequenceDMX();
+	}
+	else if (CBInfo->Label == "SharkDive")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("SharkDive"));
+		Player->PlaySequenceSharkDive();
+	}
+	else if (CBInfo->Label == "SharkWave")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("SharkDive"));
+		Player->PlaySequenceSharkWave();
+	}
+
 
 }
 
@@ -453,6 +479,16 @@ void UAkAudioComponent::ActiveFish()
 	{
 		ActiveVfx->VFXActiveComp->ActiveVFX();
 	}
+
+}
+
+void UAkAudioComponent::ActiveFish2()
+{
+	for (auto ActiveVfx : Fish2)
+	{
+		ActiveVfx->VFXActiveComp->ActiveVFX();
+	}
+
 
 }
 
@@ -503,39 +539,6 @@ void UAkAudioComponent::ModifiedNiagara()
 	}
 
 }
-// 일단 안쓸것
-void UAkAudioComponent::ActiveBeam()
-{
-	for (auto ActiveVfx : Beam)
-	{
-		ActiveVfx->VFXActiveComp->ActiveVFX();
-	}
-
-}
-// 일단 안쓸것
-void UAkAudioComponent::ModifyLocationNiagara()
-{
-	for (auto ActiveVfx : Beam)
-	{
-		FVector StartLoc = ActiveVfx->GetActorLocation();
-		FVector Dir = ActiveVfx->GetActorForwardVector();
-		float Speed = 1000.0f;
-		int32 Segment = 10;
-		float Interval = 0.5f;
-		ActiveVfx->VFXActiveComp->ModifyLocation(StartLoc,Dir,Speed,Segment,Interval);
-	}
-	//for (auto ActiveVfx : Fish)
-	//{
-	//	FVector StartLoc = ActiveVfx->GetActorLocation();
-	//	FVector Dir = ActiveVfx->GetActorForwardVector();
-	//	float Speed = 1000.0f;
-	//	int32 Segment = 10;
-	//	float Interval = 0.5f;
-	//	ActiveVfx->VFXActiveComp->ModifyLocation(StartLoc, Dir, Speed, Segment, Interval);
-	//}
-
-}
-
 void UAkAudioComponent::ActiveAssey()
 {
 	for (auto ActiveVfx : Assey)
