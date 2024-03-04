@@ -27,6 +27,9 @@ public:
 	// ------------FUNCTION-----------
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayMusic();
+	UFUNCTION(BlueprintImplementableEvent)
+	void StopMusic();
+	
 	// ------------FUNCTION-----------
 
 };

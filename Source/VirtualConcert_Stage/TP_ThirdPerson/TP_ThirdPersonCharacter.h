@@ -109,6 +109,9 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
 	class AMyAudioSynesthesia* AudioSynesthesia;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	class ACubeVisualization* CubeVisualization;
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")

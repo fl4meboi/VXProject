@@ -13,6 +13,8 @@
 #include <../../LevelSequence/Public/LevelSequence.h>
 #include <../../MovieScene/Public/MovieSceneSequencePlaybackSettings.h>
 #include <../../LevelSequence/Public/LevelSequencePlayer.h>
+#include "../AudioSpectrum/MyAudioSynesthesia.h"
+#include "../AudioSpectrum/CubeVisualization.h"
 
 
 UAkAudioComponent::UAkAudioComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
@@ -463,14 +465,34 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("SharkDive"));
 		Player->PlaySequenceSharkWave();
 	}
-
+	else if (CBInfo->Label == "Finish")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Finish"));
+		Player->AudioSynesthesia->StopMusic();
+		Player->CubeVisualization->StopMusic();
+		bPlayMusic = false;
+	}
 
 }
 
 void UAkAudioComponent::PlayAkEvent()
 {
-	PostAssociatedAkEvent(4, BindCallback);
+	if (bPlayMusic == false)
+	{
+		PostAssociatedAkEvent(4, BindCallback);
+		bPlayMusic= true;
+	}
+	else
+	{
+		StopAkEvent();
+		bPlayMusic = false;
+	}
 
+}
+
+void UAkAudioComponent::StopAkEvent()
+{
+	Stop();
 }
 
 void UAkAudioComponent::ActiveFish()

@@ -21,6 +21,7 @@
 #include "../Dive/DiveLED.h"
 #include "../Dive/DiveController.h"
 #include "../AI/AI.h"
+#include "../AudioSpectrum/CubeVisualization.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -99,12 +100,15 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 #pragma region MyCode
 
 	
-	//BP_AudioSynesthesia 찾기
+	//BP_AudioSynesthesia, CubeVisualization 찾기
 	for (TActorIterator<AMyAudioSynesthesia> it(GetWorld()); it; ++it)
 	{
 			AudioSynesthesia = *it;
 	}
-
+	for (TActorIterator<ACubeVisualization> it(GetWorld()); it; ++it)
+	{
+		CubeVisualization = *it;
+	}
 	//BP_DMX 찾기 , display 찾기 , DiveLed 찾기 , AI 찾기
 	TArray<AActor*> AllActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), AllActors);
@@ -153,7 +157,7 @@ void ATP_ThirdPersonCharacter::UseNum1()
 		TempObject->SpotComp->SetClockLightColor();
 	
 	}*/
-	
+	AkAudioComp->StopAkEvent();
 
 
 }

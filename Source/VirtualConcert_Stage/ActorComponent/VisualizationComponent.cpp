@@ -13,13 +13,13 @@ UVisualizationComponent::UVisualizationComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 
 	//사운드 큐 생성
-	static ConstructorHelpers::FObjectFinder<USoundCue> SoundCueAsset(TEXT("/Script/Engine.SoundCue'/Game/__GDH/Sound/SC_CHERE.SC_CHERE'"));
+	static ConstructorHelpers::FObjectFinder<USoundCue> SoundCueAsset(TEXT("/Script/Engine.SoundCue'/Game/__GDH/Sound/Smile_You_re_On_Acid_Cue.Smile_You_re_On_Acid_Cue'"));
 	if(SoundCueAsset.Succeeded())
 	{
 		Music = SoundCueAsset.Object;
 	}
 
-	static ConstructorHelpers::FObjectFinder<UConstantQNRT> QNRTAsset(TEXT("/Script/AudioSynesthesia.ConstantQNRT'/Game/__GDH/Sound/SNRT_CHERE.SNRT_CHERE'"));
+	static ConstructorHelpers::FObjectFinder<UConstantQNRT> QNRTAsset(TEXT("/Script/AudioSynesthesia.ConstantQNRT'/Game/AudioSynesthesia/Synesthesia/NTR/NewAudioSynesthesiaNRT.NewAudioSynesthesiaNRT'"));
 	if (QNRTAsset.Succeeded())
 	{
 		Synesthesia_Analysis = QNRTAsset.Object;

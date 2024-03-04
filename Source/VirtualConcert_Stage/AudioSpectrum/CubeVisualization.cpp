@@ -30,3 +30,8 @@ void ACubeVisualization::Tick(float DeltaTime)
 
 }
 
+void ACubeVisualization::StopMusic()
+{
+	AudioComp->Stop();
+}
+

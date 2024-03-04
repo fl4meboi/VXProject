@@ -44,13 +44,14 @@ public:
 	
 	class ATP_ThirdPersonCharacter* Player;
 
-
+	bool bPlayMusic;
 	
 	// --------------Variable-------------
 	
 
 	// --------------Function-------------
 	void PlayAkEvent();
+	void StopAkEvent();
 	void ActiveFish();
 	void ActiveFish2();
 	void ActiveFirewoks();
