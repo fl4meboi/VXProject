@@ -28,7 +28,7 @@ void ASplitRenderActor::BeginPlay()
 	Super::BeginPlay();
 	
 
-	UMaterialInterface* SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/RenderTarget/Split/M_SplitFlower.M_SplitFlower'")));
+	UMaterialInterface* SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/RenderTarget/Rectangle/M_Rectangle.M_Rectangle'")));
 
 	if (SrcMaterial)
 	{
