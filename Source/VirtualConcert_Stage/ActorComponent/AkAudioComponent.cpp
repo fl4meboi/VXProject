@@ -74,12 +74,22 @@ void UAkAudioComponent::BeginPlay()
 		{
 			Fish2.Add(Cast<AVFX>(TempVfx));
 		}
-
+		else if (TempVfx->GetName().Contains("BP_HyrightSmall") == true)
+		{
+			Hyrights.Insert(Cast<AVFX>(TempVfx), 0);
+		}
+		else if (TempVfx->GetName().Contains("BP_HyrighBig") == true)
+		{
+			Hyrights.Add(Cast<AVFX>(TempVfx));
+		}
 
 	}
 
 	// ======================등록 검색===========================
 
+
+	FString str = FString::Printf(TEXT("%d"), Hyrights.Num());
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, str);
 
 
 }
@@ -499,6 +509,7 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		
 
 	}
+
 }
 
 void UAkAudioComponent::PlayAkEvent()
@@ -608,5 +619,37 @@ void UAkAudioComponent::ActiveYall()
 	for (auto ActiveVfx : Yall)
 	{
 		ActiveVfx->VFXActiveComp->ActiveVFX();
+	}
+}
+
+void UAkAudioComponent::ActiveHyrights()
+{
+	float Temp = 0.01f;
+
+
+	for (int32 i = 0;i < Hyrights.Num(); i++)
+	{
+
+		
+
+		FTimerHandle Handle;
+		Player->GetWorldTimerManager().SetTimer(Handle, this , &UAkAudioComponent::ActiveEachHyright, Temp, false);
+
+		Temp += 0.03f;
+	}
+
+}
+
+void UAkAudioComponent::ActiveEachHyright()
+{
+	Hyrights[TempI]->VFXActiveComp->ActiveVFX();
+	
+	FString str = FString::Printf(TEXT("%d"), TempI);
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, str);
+
+	TempI++;
+	if (TempI == 28)
+	{
+		TempI =0;
 	}
 }

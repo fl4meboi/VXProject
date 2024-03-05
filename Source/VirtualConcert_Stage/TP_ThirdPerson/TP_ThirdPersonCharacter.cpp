@@ -162,8 +162,7 @@ void ATP_ThirdPersonCharacter::UseNum1()
 		TempObject->SpotComp->SetClockLightColor();
 	
 	}*/
-	AkAudioComp->StopAkEvent();
-
+	AkAudioComp->ActiveHyrights();
 
 }
 
@@ -295,7 +294,7 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		//MY CODE//
 #pragma region MyCode
 
-		EnhancedInputComponent->BindAction(Num1Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum1);
+		EnhancedInputComponent->BindAction(Num1Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum1);
 		EnhancedInputComponent->BindAction(Num2Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum2);
 		EnhancedInputComponent->BindAction(Num3Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum3);
 		EnhancedInputComponent->BindAction(Num4Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum4);

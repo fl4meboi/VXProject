@@ -40,8 +40,10 @@ public:
 	TArray<class AVFX*> Yall;
 	UPROPERTY(VisibleAnywhere ,Category = "Variable")
 	TArray<class AVFX*> Fish2;
-	
-	
+	UPROPERTY(VisibleAnywhere ,Category = "Variable")
+	TArray<class AVFX*> Hyrights;
+	int32 TempI = 0;
+
 	class ATP_ThirdPersonCharacter* Player;
 
 	bool bPlayMusic;
@@ -61,7 +63,8 @@ public:
 	void ActiveAssey();
 	void ActiveSwayle();
 	void ActiveYall();
-	
+	void ActiveHyrights();
+	void ActiveEachHyright();
 	// --------------Function-------------
 
 
