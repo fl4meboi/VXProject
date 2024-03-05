@@ -122,6 +122,9 @@ public:
 	TArray<class ADiveController*> DiveControllObjects;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
 	TArray<class AAI*> AIObjects;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	TArray<class ASplitRenderActor*> SplitRenderActorObjects;
+
 
 	void UseNum1();
 	void UseNum2();

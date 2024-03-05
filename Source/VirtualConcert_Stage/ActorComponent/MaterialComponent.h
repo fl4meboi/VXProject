@@ -85,6 +85,14 @@ public:
 	bool RaiseLerp = false;
 
 	void MarkerReady();
+
+	void RotateRenderRect();
+
+	void RotateAndSetStartClock();
+
+	void RotateStop();
+
+	void MarkerRect();
 	// -------------------Function-----------------
 
 

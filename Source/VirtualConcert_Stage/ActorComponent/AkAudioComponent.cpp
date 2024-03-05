@@ -15,6 +15,7 @@
 #include <../../LevelSequence/Public/LevelSequencePlayer.h>
 #include "../AudioSpectrum/MyAudioSynesthesia.h"
 #include "../AudioSpectrum/CubeVisualization.h"
+#include "../MaterialActor/SplitRenderActor.h"
 
 
 UAkAudioComponent::UAkAudioComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
@@ -472,7 +473,32 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		Player->CubeVisualization->StopMusic();
 		bPlayMusic = false;
 	}
+	else if (CBInfo->Label == "SplitRenderRotate")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("SplitRenderRotate"));
+		for (auto SplitRenderActor : Player->SplitRenderActorObjects)
+		{
+			SplitRenderActor->MatComp->RotateAndSetStartClock();
+		}
+	}
+	else if (CBInfo->Label == "SplitRenderStop")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("SplitRenderStop"));
+		for (auto SplitRenderActor : Player->SplitRenderActorObjects)
+		{
+			SplitRenderActor->MatComp->RotateStop();
+		}
+	}
+	else if (CBInfo->Label == "Rect")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Rect"));
+		for (auto ActiveDisplay : Player->DisplayActorObjects)
+		{
+			ActiveDisplay->MatComp->MarkerRect();
+		}
+		
 
+	}
 }
 
 void UAkAudioComponent::PlayAkEvent()

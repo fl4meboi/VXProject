@@ -1,6 +1,7 @@
 #include "ActorComponent/MaterialComponent.h"
 #include "../Guide/Arrow.h"
 #include "../MaterialActor/DisplayActor.h"
+#include "../MaterialActor/SplitRenderActor.h"
 
 UMaterialComponent::UMaterialComponent()
 {
@@ -43,7 +44,7 @@ void UMaterialComponent::BeginPlay()
 
 	}
 
-	SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/M_Flower3.M_Flower3'")));
+	SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/M_Road.M_Road'")));
 	if (SrcMaterial)
 	{
 		SrcMaterials.Add(SrcMaterial);
@@ -71,14 +72,14 @@ void UMaterialComponent::BeginPlay()
 
 	}
 
-	SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/M_Rotate.M_Rotate'")));
+	SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/RenderTarget/Rectangle/M_Rectangle.M_Rectangle'")));
 	if (SrcMaterial)
 	{
 		SrcMaterials.Add(SrcMaterial);
 
 	}
 
-	SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/M_RotateCircle.M_RotateCircle'")));
+	SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/RenderTarget/Display/M_Rotate.M_Rotate'")));
 	if (SrcMaterial)
 	{
 		SrcMaterials.Add(SrcMaterial);
@@ -254,4 +255,43 @@ void UMaterialComponent::MarkerReady()
 		DisplayActor->MeshComp->SetMaterial(0, DynMats[8]);
 		DynMat = DynMats[8];
 	}
+}
+
+void UMaterialComponent::RotateRenderRect()
+{
+	auto RenderActor = Cast<ASplitRenderActor>(Owner);
+	
+	if (RenderActor)
+	{
+		DynMat->SetScalarParameterValue(FName("Rotate"), 1.0f);
+	}
+
+}
+
+void UMaterialComponent::RotateAndSetStartClock()
+{
+	MaterialTimeReset();
+	RotateRenderRect();
+
+}
+
+void UMaterialComponent::RotateStop()
+{
+	auto RenderActor = Cast<ASplitRenderActor>(Owner);
+
+	if (RenderActor)
+	{
+		DynMat->SetScalarParameterValue(FName("Rotate"), 0.0f);
+	}
+}
+
+void UMaterialComponent::MarkerRect()
+{
+	if (DisplayActor)
+	{
+		DisplayActor->MeshComp->SetMaterial(0, DynMats[7]);
+		DynMat = DynMats[7];
+	}
+	MaterialTimeReset();
+	RotateRenderRect();
 }

@@ -22,6 +22,7 @@
 #include "../Dive/DiveController.h"
 #include "../AI/AI.h"
 #include "../AudioSpectrum/CubeVisualization.h"
+#include "../MaterialActor/SplitRenderActor.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -132,6 +133,10 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 		else if (auto Temp4 = Cast<AAI>(TempActor))
 		{
 			AIObjects.Add(Temp4);
+		}
+		else if (auto Temp5 = Cast<ASplitRenderActor>(TempActor))
+		{
+			SplitRenderActorObjects.Add(Temp5);
 		}
 	}
 #pragma endregion MyCode
