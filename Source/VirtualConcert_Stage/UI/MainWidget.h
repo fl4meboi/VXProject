@@ -29,7 +29,7 @@ public:
 	FWidgetAnimationDynamicEvent TestWidgetAnimationEvent;
 
 	//상태머신
-	int32 GuideNumber = 5;
+	int32 GuideNumber = 4;
 
 	// ------------------------ Variable -----------------------
 
