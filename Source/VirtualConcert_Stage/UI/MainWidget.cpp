@@ -29,19 +29,10 @@ void UMainWidget::PlayNextAnimation()
 		return;		
 	}
 	
-	if(4 == GuideNumber)
+	if(3 == GuideNumber)
 	{
 		//한글 폰트는 TEXT로 한글을 받아야 안깨지는거 확인..
-		FString CurrentMessage = TEXT("안녕하세요. VX Stuido에 오신걸 환영합니다.");
-		Text->SetText(FText::FromString(CurrentMessage));
-
-
-	}
-
-	if (3 == GuideNumber)
-	{
-
-		FString CurrentMessage = TEXT("저희는 사용자의 입력이나, 환경 변화에 반응하여 시각효과를 보여주는 목표를 가지고 있습니다.");
+		FString CurrentMessage = TEXT("안녕하세요. VX Studio에 오신 것을 환영합니다.");
 		Text->SetText(FText::FromString(CurrentMessage));
 
 
@@ -50,7 +41,7 @@ void UMainWidget::PlayNextAnimation()
 	if (2 == GuideNumber)
 	{
 
-		FString CurrentMessage = TEXT("사용자가 가상 환경에서 실제로 몰입할 수 있도록 도움을 주고 있습니다.");
+		FString CurrentMessage = TEXT("이 곳은 초현실적 사운드 홀로, 음악과 상호작용하며 특별한 경험을 즐길 수 있는 공간입니다.");
 		Text->SetText(FText::FromString(CurrentMessage));
 
 
@@ -59,9 +50,9 @@ void UMainWidget::PlayNextAnimation()
 	if (1 == GuideNumber)
 	{
 
-
-		FString CurrentMessage = TEXT("사운드를 통해 보다 직관적이고, 몰입감 있는 상호작용을 경험할 수 있을 겁니다.");
+		FString CurrentMessage = TEXT("오디오비주얼 퍼포먼스를 통해 보다 직관적이고 몰입감 있는 체험을 하실 수 있습니다.");
 		Text->SetText(FText::FromString(CurrentMessage));
+
 
 	}
 
@@ -69,11 +60,11 @@ void UMainWidget::PlayNextAnimation()
 	{
 
 
-		FString CurrentMessage = TEXT("아직은 부족한게 많지만, 나중에 보다 더 괜찮은 모습으로 나오겠습니다. ㅠ");
+		FString CurrentMessage = TEXT("즐거운 관람되시기를 바랍니다.");
 		Text->SetText(FText::FromString(CurrentMessage));
 
-
 	}
+
 
 
 	PlayAnimation(Guide);
