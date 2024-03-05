@@ -509,6 +509,11 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		
 
 	}
+	else if (CBInfo->Label == "Hyright")
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Hyright"));
+		ActiveHyrights();
+	}
 
 }
 

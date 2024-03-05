@@ -162,7 +162,7 @@ void ATP_ThirdPersonCharacter::UseNum1()
 		TempObject->SpotComp->SetClockLightColor();
 	
 	}*/
-	AkAudioComp->ActiveHyrights();
+	//AkAudioComp->ActiveHyrights();
 
 }
 
