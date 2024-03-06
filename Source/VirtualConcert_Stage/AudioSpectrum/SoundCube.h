@@ -38,6 +38,8 @@ public:
 	class UMaterialInstanceDynamic* DynMat;
 	
 	
+	UPROPERTY(EditAnywhere)
+	class UMaterialInterface* SrcMaterial;
 	
 	
 	// ---------------Variable-----------------
@@ -50,7 +52,7 @@ public:
 
 	// ---------------Function-----------------
 	UFUNCTION(BlueprintCallable)
-	void SetMaterial(FLinearColor HSVtoRGB);
+	void SetMyMaterial(FLinearColor HSVtoRGB);
 	
 	// ---------------Function-----------------
 

@@ -35,7 +35,7 @@ public:
 
 	float CurrentA = 1.0f;
 
-	UPROPERTY(VisibleAnywhere, Category = "Variable")
+	UPROPERTY(EditDefaultsOnly, Category = "Variable")
 	TArray<class UMaterialInterface *> SrcMaterials;
 	UPROPERTY(VisibleAnywhere, Category = "Variable")
 	TArray<class UMaterialInstanceDynamic *> DynMats;

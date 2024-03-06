@@ -19,9 +19,10 @@ void AAI::BeginPlay()
 	
 
 	//머티리얼 저장
-	UMaterialInterface* SrcMaterial;
+	/*UMaterialInterface* SrcMaterial;
 
-	SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Blueprint/Player/M_HoloAI.M_HoloAI'")));
+	SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Blueprint/Player/M_HoloAI.M_HoloAI'")));*/
+
 	if (SrcMaterial)
 	{
 		DynMat = GetMesh()->CreateDynamicMaterialInstance(0, SrcMaterial);

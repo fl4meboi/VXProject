@@ -21,8 +21,6 @@ ASoundCube::ASoundCube()
 
 
 	MatComp = CreateDefaultSubobject<UMaterialComponent>(TEXT("MatComp"));
-
-
 }
 
 void ASoundCube::BeginPlay()
@@ -40,10 +38,9 @@ void ASoundCube::Tick(float DeltaTime)
 
 }
 
-void ASoundCube::SetMaterial(FLinearColor HSVtoRGB)
+void ASoundCube::SetMyMaterial(FLinearColor HSVtoRGB)
 {
 	
-	UMaterialInterface* SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.MaterialInstanceConstant'/Game/__GDH/Metarials/MI_EmissiveLight.MI_EmissiveLight'")));
 
 
 	if (SrcMaterial)

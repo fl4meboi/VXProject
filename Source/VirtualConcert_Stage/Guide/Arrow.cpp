@@ -34,7 +34,7 @@ void AArrow::BeginPlay()
 	Super::BeginPlay();
 	
 	//赣抛府倔 悼利 积己
-	UMaterialInterface* SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/M_Arrow.M_Arrow'")));
+	//UMaterialInterface* SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/M_Arrow.M_Arrow'")));
 	DynMat = MeshComp->CreateDynamicMaterialInstance(0, SrcMaterial);
 	
 	

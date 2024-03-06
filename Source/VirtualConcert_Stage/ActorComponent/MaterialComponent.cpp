@@ -21,7 +21,7 @@ void UMaterialComponent::BeginPlay()
 	{
 
 	//머티리얼 저장
-	UMaterialInterface* SrcMaterial;
+	/*UMaterialInterface* SrcMaterial;
 	
 	SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/M_Drum.M_Drum'")));
 	if (SrcMaterial)
@@ -84,7 +84,7 @@ void UMaterialComponent::BeginPlay()
 	{
 		SrcMaterials.Add(SrcMaterial);
 
-	}
+	}*/
 
 	for (auto Temp : SrcMaterials)
 	{

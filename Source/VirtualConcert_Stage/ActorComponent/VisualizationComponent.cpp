@@ -19,12 +19,7 @@ UVisualizationComponent::UVisualizationComponent()
 		Music = SoundCueAsset.Object;
 	}
 
-	static ConstructorHelpers::FObjectFinder<UConstantQNRT> QNRTAsset(TEXT("/Script/AudioSynesthesia.ConstantQNRT'/Game/AudioSynesthesia/Synesthesia/NTR/NewAudioSynesthesiaNRT.NewAudioSynesthesiaNRT'"));
-	if (QNRTAsset.Succeeded())
-	{
-		Synesthesia_Analysis = QNRTAsset.Object;
-	}
-
+	
 
 }
 
@@ -78,12 +73,12 @@ TArray<ASoundCube*> UVisualizationComponent::SpawnSoundCubes(int32 NumberOfCubes
 		FActorSpawnParameters Params;
 		Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-		ASoundCube* SpawnedCube = GetWorld()->SpawnActor<ASoundCube>(ASoundCube::StaticClass(), MyTrans, Params);
+		ASoundCube* SpawnedCube = GetWorld()->SpawnActor<ASoundCube>(Temp100, MyTrans, Params);
 
 		double normal = UKismetMathLibrary::NormalizeToRange((double) i , 0 , 96);
 		normal *= 360.0;
 		FLinearColor SpectrumCol = UKismetMathLibrary::HSVToRGB(normal, 1.0f ,1.0f ,1.0f );
-		SpawnedCube->SetMaterial(SpectrumCol);
+		SpawnedCube->SetMyMaterial(SpectrumCol);
 
 		if (SpawnedCube)
 		{

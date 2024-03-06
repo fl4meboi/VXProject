@@ -35,6 +35,8 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Variable")
 	UMaterialInstanceDynamic* DynMat;
 	
+	UPROPERTY(EditDefaultsOnly)
+	class UMaterialInterface* SrcMaterial;
 	
 	// -------------Variable --------------
 	

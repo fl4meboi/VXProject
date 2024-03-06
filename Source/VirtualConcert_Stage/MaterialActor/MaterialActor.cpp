@@ -33,7 +33,7 @@ void AMaterialActor::BeginPlay()
 	Super::BeginPlay();
 	
 
-	UMaterialInterface* SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/M_Rectangle.M_Rectangle'")));
+	//UMaterialInterface* SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/M_Rectangle.M_Rectangle'")));
 
 	if(SrcMaterial)
 	{

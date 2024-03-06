@@ -43,6 +43,9 @@ public:
 	// 꼭 에디터에서 넣어주기
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
 	class UConstantQNRT* Synesthesia_Analysis;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	TSubclassOf<class ASoundCube> Temp100; 
+
 
 	// -------------------Variable -------------------
 	

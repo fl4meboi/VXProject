@@ -32,7 +32,7 @@ void ADisplayActor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UMaterialInterface* SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/M_Brick.M_Brick'")));
+	//UMaterialInterface* SrcMaterial = Cast<UMaterialInterface>(StaticLoadObject(UMaterialInterface::StaticClass(), nullptr, TEXT("/Script/Engine.Material'/Game/__GDH/Metarials/Custom/M_Brick.M_Brick'")));
 
 	if (SrcMaterial)
 	{

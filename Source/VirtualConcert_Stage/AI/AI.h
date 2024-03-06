@@ -27,6 +27,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	// Variable
+	UPROPERTY(EditDefaultsOnly)
+	class UMaterialInterface* SrcMaterial;
+	
+	
 	class UMaterialInstanceDynamic* DynMat; 
 	float CurrentA = 1.0f;
 	bool bIsFade = false;
