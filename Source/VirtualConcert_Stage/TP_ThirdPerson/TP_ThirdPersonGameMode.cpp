@@ -21,11 +21,18 @@ void ATP_ThirdPersonGameMode::BeginPlay()
 {
 	
 	 MainWidget = Cast<UUserWidget>(CreateWidget(GetWorld(),MainFactory));
-	 if (Cast<UMainWidget>(MainWidget))
+	 
+	 FString CurrentLevelName = UGameplayStatics::GetCurrentLevelName(this, true);
+	 //UE_LOG(LogTemp, Warning, TEXT("%s"), *CurrentLevelName);
+	 if (CurrentLevelName == FString("Audio06"))
 	 {
+		 if (Cast<UMainWidget>(MainWidget))
+		 {
 
-			MainWidget->AddToViewport();		
+			 MainWidget->AddToViewport();
+		 }
 	 }
+	 
 
 
 	 // 마우스 커서 온

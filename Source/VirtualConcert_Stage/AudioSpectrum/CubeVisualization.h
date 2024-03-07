@@ -36,6 +36,9 @@ public:
 
 	// -----------------Function-----------------
 	void StopMusic();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OverlapStart();
 	// -----------------Function-----------------
 
 	
