@@ -137,6 +137,9 @@ public:
 	void UseNum9();
 	void PlayMusic();
 	void RotateLED();
+	UFUNCTION(BlueprintCallable)
+	void OverlapStart();
+
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlaySequenceLEDLoc();
 	

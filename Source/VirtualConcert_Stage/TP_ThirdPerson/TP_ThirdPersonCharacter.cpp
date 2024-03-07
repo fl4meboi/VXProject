@@ -273,6 +273,17 @@ void ATP_ThirdPersonCharacter::RotateLED()
 	}
 }
 
+void ATP_ThirdPersonCharacter::OverlapStart()
+{
+	AkAudioComp->PlayAkEvent();
+	AudioSynesthesia->PlayMusic();
+	for (auto TempActor : DisplayActorObjects)
+	{
+		TempActor->MatComp->OnEvent();
+	}
+	CubeVisualization->OverlapStart();
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 
