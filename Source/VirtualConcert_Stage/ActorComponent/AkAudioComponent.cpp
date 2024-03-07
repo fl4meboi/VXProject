@@ -16,6 +16,7 @@
 #include "../AudioSpectrum/MyAudioSynesthesia.h"
 #include "../AudioSpectrum/CubeVisualization.h"
 #include "../MaterialActor/SplitRenderActor.h"
+#include "../Guide/Arrow.h"
 
 
 UAkAudioComponent::UAkAudioComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
@@ -482,6 +483,11 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		Player->AudioSynesthesia->StopMusic();
 		Player->CubeVisualization->StopMusic();
 		bPlayMusic = false;
+		
+		for (auto Temp10 : ArrowObjets)
+		{
+			Temp10->Finish();
+		}
 	}
 	else if (CBInfo->Label == "SplitRenderRotate")
 	{

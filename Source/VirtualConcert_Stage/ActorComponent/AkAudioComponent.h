@@ -48,6 +48,8 @@ public:
 
 	bool bPlayMusic;
 	
+	UPROPERTY(EditAnywhere)
+	TArray<class AArrow*> ArrowObjets;
 	// --------------Variable-------------
 	
 

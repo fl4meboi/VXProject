@@ -23,7 +23,7 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Component")
 	class UVisibleComponent* VisibleComp;
 	
-	UPROPERTY(VisibleAnywhere, Category = "Component")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Component")
 	class UStaticMeshComponent* MeshComp;
 	
 	UPROPERTY(VisibleAnywhere, Category = "Component")
@@ -46,7 +46,8 @@ public:
 	
 	void UpDatate(float Delta);
 
-	
+	UFUNCTION(BlueprintImplementableEvent)
+	void Finish();
 
 	// -------------Function--------------
 
