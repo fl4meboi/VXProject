@@ -17,6 +17,7 @@
 #include "../AudioSpectrum/CubeVisualization.h"
 #include "../MaterialActor/SplitRenderActor.h"
 #include "../Guide/Arrow.h"
+#include "../TranslateLevel/TranslateLevelActor.h"
 
 
 UAkAudioComponent::UAkAudioComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
@@ -488,6 +489,7 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 		{
 			Temp10->Finish();
 		}
+		Player->TranslateLevelActorObject->Finish();
 	}
 	else if (CBInfo->Label == "SplitRenderRotate")
 	{

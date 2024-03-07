@@ -66,3 +66,9 @@ void ATranslateLevelActor::OnComponentBeginOverlap(UPrimitiveComponent* Overlapp
 	}
 }
 
+void ATranslateLevelActor::Finish()
+{
+	CollisionComp->SetCollisionProfileName(FName("ReactObject"));
+
+}
+
