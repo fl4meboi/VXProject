@@ -91,7 +91,7 @@ void UAkAudioComponent::BeginPlay()
 
 
 	FString str = FString::Printf(TEXT("%d"), Hyrights.Num());
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, str);
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, str);
 
 
 }
@@ -104,7 +104,7 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 	
 	if (CBInfo->Label == "Sharp")
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Sharp"));
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Sharp"));
 		ActiveFirewoks();
 		ActiveFish();
 		for (auto ActiveDisplay : Player->DisplayActorObjects)
@@ -116,7 +116,7 @@ void UAkAudioComponent::CallbackVFX(EAkCallbackType CallbackType, UAkCallbackInf
 	}
 	else if (CBInfo->Label == "Dj")
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Dj"));
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, TEXT("Dj"));
 		for (auto ActiveAI : Player->AIObjects)
 		{
 			ActiveAI->bIsFade = true;
