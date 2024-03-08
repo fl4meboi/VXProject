@@ -23,6 +23,7 @@
 #include "../AI/AI.h"
 #include "../AudioSpectrum/CubeVisualization.h"
 #include "../MaterialActor/SplitRenderActor.h"
+#include "../TranslateLevel/TranslateLevelActor.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -163,7 +164,7 @@ void ATP_ThirdPersonCharacter::UseNum1()
 	
 	}*/
 	//AkAudioComp->ActiveHyrights();
-
+	TranslateLevelActorObject->Finish();
 }
 
 void ATP_ThirdPersonCharacter::UseNum2()
@@ -207,7 +208,7 @@ void ATP_ThirdPersonCharacter::UseNum5()
 
 void ATP_ThirdPersonCharacter::UseNum6()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 6"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 6"));
 
 	/*for (auto TempObject : DmxObjects)
 	{
@@ -219,7 +220,7 @@ void ATP_ThirdPersonCharacter::UseNum6()
 
 void ATP_ThirdPersonCharacter::UseNum7()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 7"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 7"));
 	for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->AddOuterAngle();
@@ -228,7 +229,7 @@ void ATP_ThirdPersonCharacter::UseNum7()
 
 void ATP_ThirdPersonCharacter::UseNum8()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 8"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 8"));
 	for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->TurnUpLight();
@@ -237,7 +238,7 @@ void ATP_ThirdPersonCharacter::UseNum8()
 
 void ATP_ThirdPersonCharacter::UseNum9()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 9"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 9"));
 	for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->SubOuterAngle();
@@ -261,7 +262,7 @@ void ATP_ThirdPersonCharacter::PlayMusic()
 		}
 
 	
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("P"));
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("P"));
 	}
 
 

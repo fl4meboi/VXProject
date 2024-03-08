@@ -67,7 +67,7 @@ void UMySpotLightComponent::SetClockLightColor()
 	FLinearColor LatestColor = CurrentHSV.HSVToLinearRGB();
 	SetLightColor(LatestColor);
 	FString Log = FString::Printf(TEXT("%f"), CurrentHSV.R);
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, Log);
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, Log);
 	CurrentLight = LatestColor;
 
 }
@@ -86,7 +86,7 @@ void UMySpotLightComponent::SetUnClockLightColor()
 	FLinearColor LatestColor = CurrentHSV.HSVToLinearRGB();
 	SetLightColor(LatestColor);
 	FString Log = FString::Printf(TEXT("%f"), CurrentHSV.R);
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, Log);
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, Log);
 	CurrentLight = LatestColor;
 }
 
