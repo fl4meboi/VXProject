@@ -124,6 +124,8 @@ public:
 	TArray<class AAI*> AIObjects;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
 	TArray<class ASplitRenderActor*> SplitRenderActorObjects;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Variable")
+	class ATranslateLevelActor* TranslateLevelActorObject;
 
 
 	void UseNum1();

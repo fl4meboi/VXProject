@@ -23,6 +23,7 @@
 #include "../AI/AI.h"
 #include "../AudioSpectrum/CubeVisualization.h"
 #include "../MaterialActor/SplitRenderActor.h"
+#include "../TranslateLevel/TranslateLevelActor.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -163,7 +164,7 @@ void ATP_ThirdPersonCharacter::UseNum1()
 	
 	}*/
 	//AkAudioComp->ActiveHyrights();
-
+	TranslateLevelActorObject->Finish();
 }
 
 void ATP_ThirdPersonCharacter::UseNum2()
@@ -207,7 +208,7 @@ void ATP_ThirdPersonCharacter::UseNum5()
 
 void ATP_ThirdPersonCharacter::UseNum6()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 6"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 6"));
 
 	/*for (auto TempObject : DmxObjects)
 	{
@@ -219,7 +220,7 @@ void ATP_ThirdPersonCharacter::UseNum6()
 
 void ATP_ThirdPersonCharacter::UseNum7()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 7"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 7"));
 	for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->AddOuterAngle();
@@ -228,7 +229,7 @@ void ATP_ThirdPersonCharacter::UseNum7()
 
 void ATP_ThirdPersonCharacter::UseNum8()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 8"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 8"));
 	for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->TurnUpLight();
@@ -237,7 +238,7 @@ void ATP_ThirdPersonCharacter::UseNum8()
 
 void ATP_ThirdPersonCharacter::UseNum9()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 9"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("Key 9"));
 	for (auto TempObject : DmxObjects)
 	{
 		TempObject->SpotComp->SubOuterAngle();
@@ -249,17 +250,20 @@ void ATP_ThirdPersonCharacter::UseNum9()
 // flipflop 박긴 해야함.
 void ATP_ThirdPersonCharacter::PlayMusic()
 {
-	
-	AkAudioComp->PlayAkEvent();
-	AudioSynesthesia->PlayMusic();
-	for (auto TempActor : DisplayActorObjects)
+	FString CurrentLevelName = UGameplayStatics::GetCurrentLevelName(this, true);
+	//UE_LOG(LogTemp, Warning, TEXT("%s"), *CurrentLevelName);
+	if (CurrentLevelName == FString("Audio06"))
 	{
-		TempActor->MatComp->OnEvent();
+		AkAudioComp->PlayAkEvent();
+		AudioSynesthesia->PlayMusic();
+		for (auto TempActor : DisplayActorObjects)
+		{
+			TempActor->MatComp->OnEvent();
+		}
+
+	
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("P"));
 	}
-
-
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, TEXT("P"));
-
 
 
 }
@@ -305,7 +309,7 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		//MY CODE//
 #pragma region MyCode
 
-		EnhancedInputComponent->BindAction(Num1Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum1);
+		/*EnhancedInputComponent->BindAction(Num1Action, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::UseNum1);
 		EnhancedInputComponent->BindAction(Num2Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum2);
 		EnhancedInputComponent->BindAction(Num3Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum3);
 		EnhancedInputComponent->BindAction(Num4Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum4);
@@ -313,7 +317,7 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(UInputComponent* Player
 		EnhancedInputComponent->BindAction(Num6Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum6);
 		EnhancedInputComponent->BindAction(Num7Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum7);
 		EnhancedInputComponent->BindAction(Num8Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum8);
-		EnhancedInputComponent->BindAction(Num9Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum9);
+		EnhancedInputComponent->BindAction(Num9Action, ETriggerEvent::Ongoing, this, &ATP_ThirdPersonCharacter::UseNum9);*/
 
 
 		EnhancedInputComponent->BindAction(PlayMusicAction, ETriggerEvent::Started, this, &ATP_ThirdPersonCharacter::PlayMusic);
